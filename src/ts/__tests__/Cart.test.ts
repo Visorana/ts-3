@@ -57,25 +57,27 @@ describe('Cart', () => {
 
   describe('calculating prices', () => {
     test('calculating total price should return the correct amount', () => {
-      const book1 = new Book(1, 'Book Title 1', 'Author', 100, 10);
-      const book2 = new Book(2, 'Book Title 2', 'Author', 100, 10);
-      cart.add(book1);
-      cart.add(book2);
+      const smartphone1 = new Smartphone(1, 'Model 1', 'Brand', 10000);
+      const smartphone2 = new Smartphone(2, 'Model 2', 'Brand', 20000);
+      cart.add(smartphone1);
+      cart.add(smartphone2);
+      cart.add(smartphone2);
 
       const totalPrice = cart.calculateTotalPrice();
 
-      expect(totalPrice).toBe(20);
+      expect(totalPrice).toBe(50000);
     });
 
     test('calculating total price with discount should return the correct amount', () => {
-      const book1 = new Book(1, 'Book Title 1', 'Author', 100, 10);
-      const book2 = new Book(2, 'Book Title 2', 'Author', 100, 10);
-      cart.add(book1);
-      cart.add(book2);
+      const smartphone1 = new Smartphone(1, 'Model 1', 'Brand', 10000);
+      const smartphone2 = new Smartphone(2, 'Model 2', 'Brand', 20000);
+      cart.add(smartphone1);
+      cart.add(smartphone1);
+      cart.add(smartphone2);
 
       const totalPriceWithDiscount = cart.calculateTotalPriceWithDiscount(20);
 
-      expect(totalPriceWithDiscount).toBe(16);
+      expect(totalPriceWithDiscount).toBe(32000);
     });
   });
 });
